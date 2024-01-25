@@ -38,6 +38,7 @@ type Ilogin = {
 
   type Ijwtpayload = {
     email: String;
+    name: String;
   };
 
 export { Iaddress, Iimage, Iname, Iuser, Ilogin, Ijwtpayload };

@@ -2,13 +2,12 @@ import { Router } from "express";
 
 import { cardModel } from "../model/card-creation-model";
 
-import { UserModel } from "../model/user-signup-model";
-
 import { userAuth } from "../middleware/is-user";
 
 import { validateCard } from "../middleware/validation";
 
 import { validateToken } from "../middleware/token-extraction";
+import { ClientRequest } from "http";
 
 
 const router = Router();
@@ -29,7 +28,6 @@ router.get("/" , async (req, res, next) => {
     });
 
 
-    //todo: authorization - the registered user
     router.get("/my-cards", validateToken, async (req, res, next) => {
 
         try {
@@ -93,12 +91,13 @@ router.get("/" , async (req, res, next) => {
                 };
 
                 });
-                /*
+
                 router.patch("/:_id", async (req, res, next) => {
                     try {
                         const { _id } = req.params;
                         const myCard = await cardModel.findById(_id);
-                        const likedBy = `user ${userId} liked it`;
+                        const name = req.user.name;
+                        const likedBy = `${name}`;
                 
                         if (!myCard) {
                             return res.status(404).json({ error: "Card not found" });
@@ -114,7 +113,6 @@ router.get("/" , async (req, res, next) => {
                         res.status(500).json({ error: "Internal Server Error" });
                     }
                 });
-                */
 
 
                     router.delete("/:_id" , async (req, res, next) => {

@@ -74,7 +74,8 @@ next(e);
 router.post("/login", validateLogin, (req, res, next) => {
 
     const payload : Ijwtpayload = {
-        email: req.body.email
+        email: req.body.email,
+        name: req.body.name,
     };
 
     const token = auth.generateJWT(payload);

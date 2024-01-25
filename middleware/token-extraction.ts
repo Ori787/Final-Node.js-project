@@ -6,7 +6,7 @@ import { UserModel } from "../model/user-signup-model";
 
 
 const extractToken = (req: Request) => {
-  const authHeader = req.header("Authorization"); //"bearer aslkfdjasfl2ejroi2ejwroi32jerf"
+  const authHeader = req.header("Authorization");
 
   if (
     authHeader &&
@@ -22,7 +22,7 @@ const validateToken: RequestHandler = async (req, res, next) => {
   try {
     const token = extractToken(req);
 
-    const { email } = auth.verifyJWT(token);
+    const { email, name } = auth.verifyJWT(token);
     const user = await UserModel.findOne({ email });
     if (!user) console.log("User does not exist", 401);
     next();
