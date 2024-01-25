@@ -43,7 +43,7 @@ The project uses the following main dependencies:
  -- Cards Management
 
     The cards.ts file in the routes folder handles requests related to managing cards. The following endpoints are available:
-    
+
 
 - GET /cards: Retrieve all cards.
 
@@ -60,19 +60,22 @@ The project uses the following main dependencies:
 The users.ts file in the routes folder handles requests related to managing users. The following endpoints are available:
 
 
-- GET /users: Retrieve all users.
+- GET /users: Retrieve all users (with admin authorization).
 
-- GET /users/:_id: Retrieve a specific user by ID.
+- GET /users/:_id: Retrieve a specific user by ID (Authorization: the registered user or admin).
 
 - POST /users: Create a new user.
 
-- PATCH /users/:_id: Update a user by ID.
+- POST /users/login: generate token and encrypt it.
 
-- DELETE /users/:_id: Delete a user by ID.
+- PUT /users/:_id: edit user's information (Authorization: the registered user).
+
+- PATCH /users/:_id: Update a user's business status by ID (Authorization: the registered user).
+
+- DELETE /users/:_id: Delete a user by ID (Authorization: the registered user or admin).
 
 
 * Handling Requests *
 
 To test the endpoints and handle requests, you can use the requests.http file.
- This file contains sample HTTP requests that you can execute using tools like Visual Studio Code's REST Client extension or cURL.
-
+ This file contains sample HTTP requests that you can execute using tools like Visual Studio Code's REST Client extension or
