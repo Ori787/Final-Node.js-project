@@ -49,11 +49,15 @@ The project uses the following main dependencies:
 
 - GET /cards/:_id: Retrieve a specific card by ID.
 
+- GET /cards/my-cards: Retrieve an array of the user's cards (Authorization: the registered user).
+
 - POST /cards: Create a new card.
 
 - PATCH /cards/:_id: Update a card liked list by ID.
 
 - DELETE /cards/:_id: Delete a card by ID.
+
+- PUT /cards/:_id: edit the user's card (Authorization: the user who owns the card).
 
 -- Users Management
 
